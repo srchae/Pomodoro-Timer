@@ -56,7 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void onRestartPressed() {
     setState(() {
       totalSeconds = twentyFiveMinutes;
-      isRunning = false;
     });
   }
 
@@ -119,7 +118,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardColor,
-                        borderRadius: BorderRadius.circular(50),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50), // 왼쪽 상단
+                          topRight: Radius.circular(50), // 오른쪽 상단
+                          bottomLeft: Radius.zero, // 왼쪽 하단 (직선)
+                          bottomRight: Radius.zero, // 오른쪽 하단 (직선)
+                        ),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -135,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            "$totalPomodoros",
+                            " 🍅 $totalPomodoros",
                             style: TextStyle(
                                 color: Theme.of(context)
                                     .textTheme
